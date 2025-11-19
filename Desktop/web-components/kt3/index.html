@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            font-size: 2rem;
+        }
+        
+        .categories {
+            margin-bottom: 3rem;
+        }
+        
+        .category-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category {
+            background: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-weight: 600;
+            color: #3498db;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .products-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шаблон для карточки товара -->
+    <template id="product-card-template">
+        <style>
+            .product-card {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                padding: 20px;
+                margin: 15px;
+                transition: all 0.3s ease;
+                max-width: 300px;
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+            
+            .product-card:hover {
+                transform: translateY(-7px);
+                box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            }
+            
+            .product-image {
+                width: 100%;
+                height: 180px;
+                object-fit: contain;
+                border-radius: 6px;
+                margin-bottom: 15px;
+                background-color: #f8f9fa;
+                padding: 10px;
+            }
+            
+            .product-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #2c3e50;
+                flex-grow: 0;
+            }
+            
+            .product-description {
+                color: #6c757d;
+                margin-bottom: 15px;
+                font-size: 0.9rem;
+                flex-grow: 1;
+            }
+            
+            .product-price {
+                font-size: 1.4rem;
+                font-weight: bold;
+                color: #e74c3c;
+                margin-bottom: 15px;
+                flex-grow: 0;
+            }
+            
+            .product-actions {
+                display: flex;
+                justify-content: space-between;
+                flex-grow: 0;
+            }
+            
+            .btn {
+                padding: 10px 16px;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-weight: 600;
+                transition: all 0.3s;
+                font-size: 0.9rem;
+            }
+            
+            .btn-primary {
+                background-color: #3498db;
+                color: white;
+            }
+            
+            .btn-primary:hover {
+                background-color: #2980b9;
+                transform: scale(1.05);
+            }
+            
+            .btn-secondary {
+                background-color: #ecf0f1;
+                color: #34495e;
+            }
+            
+            .btn-secondary:hover {
+                background-color: #d5dbdb;
+                transform: scale(1.05);
+            }
+            
+            .rating {
+                display: flex;
+                margin-bottom: 10px;
+                color: #f39c12;
+            }
+        </style>
+        
+        <div class="product-card">
+            <img class="product-image" src="" alt="">
+            <h3 class="product-title"></h3>
+            <div class="rating">★★★★☆</div>
+            <p class="product-description"></p>
+            <div class="product-price"></div>
+            <div class="product-actions">
+                <button class="btn btn-primary">Купить сейчас</button>
+                <button class="btn btn-secondary">Подробнее</button>
+            </div>
+        </div>
+    </template>
+    <site-header></site-header>
+    
+    <main>
+        <div class="container">
+            <div class="hero-section">
+                <h1>Добро пожаловать</h1>
+                <p>Лучшая электроника по доступным ценам</p>
+            </div>
+            
+            <section class="products">
+                <div class="products-grid">
+                    <product-card 
+                        image="https://api.2droida.ru/storage/products/2f5e426bf0cf949919df221a875fe5ae/6726/3cb3b081e0aab1f9bf39608139da70f2.jpg"
+                        title="Смартфон"
+                        description="Мощный смартфон с отличной камерой и долгим временем работы. Идеален для работы и развлечений."
+                        price="25 990 ₽">
+                    </product-card>
+                    
+                    <product-card 
+                        image="https://avatars.mds.yandex.net/get-mpic/4497593/img_id4353512378176656565.jpeg/orig"
+                        title="Ноутбук"
+                        description="Легкий и производительный ноутбук для работы и учебы. Отличное качество сборки."
+                        price="54 990 ₽">
+                    </product-card>
+                    
+                    <product-card 
+                        image="https://cdn1.ozone.ru/s3/multimedia-n/6236928119.jpg"
+                        title="Беспроводные наушники"
+                        description="Качественный звук и комфортная посадка для длительного использования. До 20 часов работы."
+                        price="8 490 ₽">
+                    </product-card>
+                    
+                    <product-card 
+                        image="https://avatars.mds.yandex.net/get-mpic/4362876/img_id6355371645054447247.jpeg/orig"
+                        title="Планшет"
+                        description="Идеальный планшет для просмотра контента и мобильных игр. Яркий экран и мощный процессор."
+                        price="19 990 ₽">
+                    </product-card>
+                    
+                    <product-card 
+                        image="https://avatars.mds.yandex.net/get-mpic/15049969/2a0000019679caa00f93b4dba33b1d3a111d/orig"
+                        title="Умные часы"
+                        description="Отслеживайте активность, получайте уведомления и управляйте музыкой с вашего запястья."
+                        price="12 490 ₽">
+                    </product-card>
+                    
+                    <product-card 
+                        image="https://avatars.mds.yandex.net/get-mpic/3913686/2a00000197e394c09957bcb095c7cce38cb1/orig"
+                        title="Механическая клавиатура"
+                        description="Игровая клавиатура с RGB-подсветкой и механическими переключателями для точного ввода."
+                        price="6 790 ₽">
+                    </product-card>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <site-footer></site-footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
