@@ -1,0 +1,1877 @@
+/* ============================================
+   VILA EYSK - ACCOUNT PAGE COMPLETE STYLES
+   Все элементы из HTML и JavaScript
+   Приоритет над всеми другими стилями
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+
+:root {
+    /* Colors - Premium Palette */
+    --color-primary: #1a1a1a;
+    --color-primary-light: #2d2d2d;
+    --color-secondary: #666666;
+    --color-text: #484848;
+    --color-text-light: #717171;
+    
+    --color-accent: #0071c2;
+    --color-accent-hover: #005999;
+    --color-accent-light: #e6f2ff;
+    
+    --color-gold: #B8860B;
+    --color-gold-light: #f5f0e6;
+    --color-gold-dark: #8B6914;
+    
+    --color-success: #008009;
+    --color-success-light: #e8f5e9;
+    --color-warning: #ff8c00;
+    --color-warning-light: #fff3e0;
+    --color-error: #cc0000;
+    --color-error-light: #fdecea;
+    --color-info: #0071c2;
+    --color-info-light: #e6f2ff;
+    
+    /* Neutrals */
+    --color-white: #ffffff;
+    --color-off-white: #fafafa;
+    --color-light-gray: #f5f5f5;
+    --color-border: #e0e0e0;
+    --color-border-dark: #d0d0d0;
+    
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-xl: 0 16px 48px rgba(0,0,0,0.15);
+    
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-xs: 12px;
+    --font-size-sm: 13px;
+    --font-size-base: 15px;
+    --font-size-md: 16px;
+    --font-size-lg: 18px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 22px;
+    --font-size-3xl: 28px;
+    
+    /* Spacing */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
+    --space-8: 64px;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 20px;
+    --radius-pill: 500px;
+    --radius-circle: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Z-index */
+    --z-base: 1;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 1000;
+    --z-notification: 10000;
+    --z-loader: 10001;
+}
+
+/* ============================================
+   GLOBAL RESET
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ============================================
+   BODY - Основные стили страницы
+   ============================================ */
+
+body {
+    font-family: var(--font-family) !important;
+    font-size: var(--font-size-base) !important;
+    line-height: 1.6 !important;
+    color: var(--color-primary) !important;
+    background: var(--color-off-white) !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    overflow-x: hidden !important;
+}
+
+/* Убираем все лишние псевдоэлементы из других CSS */
+body::before,
+body::after {
+    display: none !important;
+    content: none !important;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ============================================
+   HEADER - Шапка страницы
+   ============================================ */
+
+.account-header {
+    background: var(--color-white) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: var(--z-sticky) !important;
+    box-shadow: var(--shadow-xs) !important;
+}
+
+.header-content {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: var(--space-4) var(--space-5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: var(--space-4) !important;
+    background: transparent !important;
+}
+
+.header-content h1 {
+    font-size: var(--font-size-xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    letter-spacing: -0.3px !important;
+    margin: 0 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+}
+
+.header-content h1 i {
+    display: none !important;
+}
+
+/* Header Buttons */
+.back-btn,
+.logout-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+    padding: var(--space-2) var(--space-4) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--color-white) !important;
+    color: var(--color-text) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: var(--transition-base) !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+}
+
+.back-btn:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+    background: var(--color-white) !important;
+    transform: none !important;
+}
+
+.logout-btn {
+    border-color: transparent !important;
+    color: var(--color-secondary) !important;
+}
+
+.logout-btn:hover {
+    color: var(--color-error) !important;
+    background: var(--color-error-light) !important;
+    border-color: transparent !important;
+}
+
+.back-btn i,
+.logout-btn i {
+    font-size: 14px !important;
+}
+
+/* ============================================
+   MAIN CONTAINER - Основной контейнер
+   ============================================ */
+
+.account-container {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: var(--space-6) var(--space-5) !important;
+    display: grid !important;
+    grid-template-columns: 340px 1fr !important;
+    gap: var(--space-6) !important;
+    background: transparent !important;
+    position: relative !important;
+    z-index: var(--z-base) !important;
+}
+
+/* ============================================
+   PROFILE SECTION - Левая панель профиля
+   ============================================ */
+
+.profile-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-4) !important;
+}
+
+/* Profile Card */
+.profile-card {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-6) !important;
+    text-align: center !important;
+    box-shadow: var(--shadow-sm) !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.profile-card::before,
+.profile-card::after {
+    display: none !important;
+}
+
+.profile-card:hover {
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
+    transition: var(--transition-base) !important;
+}
+
+/* Profile Avatar */
+.profile-avatar {
+    position: relative !important;
+    width: 120px !important;
+    height: 120px !important;
+    margin: 0 auto var(--space-4) !important;
+}
+
+.profile-avatar img {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: var(--radius-circle) !important;
+    object-fit: cover !important;
+    border: 3px solid var(--color-off-white) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.profile-avatar:hover img {
+    box-shadow: var(--shadow-md) !important;
+    transition: var(--transition-base) !important;
+}
+
+.edit-avatar {
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: var(--radius-circle) !important;
+    background: var(--color-primary) !important;
+    border: 2px solid var(--color-white) !important;
+    color: var(--color-white) !important;
+    font-size: 14px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: var(--transition-base) !important;
+}
+
+.edit-avatar:hover {
+    background: var(--color-primary-light) !important;
+    transform: scale(1.05) !important;
+}
+
+.edit-avatar i {
+    display: inline-block !important;
+}
+
+/* Profile Info */
+.profile-info {
+    margin-bottom: var(--space-4) !important;
+}
+
+.profile-info h2 {
+    font-size: var(--font-size-2xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-2) !important;
+    letter-spacing: -0.4px !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--space-2) !important;
+}
+
+.profile-info h2 i {
+    display: none !important;
+}
+
+.profile-info p {
+    color: var(--color-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    margin-bottom: var(--space-1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--space-2) !important;
+}
+
+.profile-info p i {
+    display: inline-block !important;
+    color: var(--color-text-light) !important;
+    font-size: 14px !important;
+}
+
+.member-since {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-text-light) !important;
+    margin-top: var(--space-2) !important;
+}
+
+.member-since i {
+    display: inline-block !important;
+    margin-right: var(--space-1) !important;
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+    margin-top: var(--space-4) !important;
+    width: 100% !important;
+    padding: var(--space-3) var(--space-4) !important;
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: var(--transition-base) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--space-2) !important;
+}
+
+.edit-profile-btn:hover {
+    background: var(--color-primary-light) !important;
+    transform: translateY(-1px) !important;
+}
+
+.edit-profile-btn i {
+    display: inline-block !important;
+}
+
+/* ============================================
+   LOYALTY CARD - Карта лояльности
+   ============================================ */
+
+.loyalty-card {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-5) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    box-shadow: var(--shadow-md) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.loyalty-card::before,
+.loyalty-card::after {
+    display: none !important;
+}
+
+/* Loyalty Header */
+.loyalty-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: var(--space-5) !important;
+}
+
+.loyalty-header h3 {
+    font-size: var(--font-size-md) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--space-1) !important;
+    color: var(--color-white) !important;
+}
+
+.loyalty-header h3 i {
+    display: none !important;
+}
+
+.loyalty-status {
+    font-size: var(--font-size-sm) !important;
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.loyalty-badge {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: var(--radius-circle) !important;
+    background: var(--color-gold) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    color: var(--color-white) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.loyalty-badge i {
+    display: inline-block !important;
+}
+
+/* Loyalty Progress */
+.loyalty-progress {
+    margin-bottom: var(--space-5) !important;
+}
+
+.progress-bar {
+    width: 100% !important;
+    height: 6px !important;
+    background: rgba(255,255,255,0.1) !important;
+    border-radius: 3px !important;
+    overflow: hidden !important;
+    margin-bottom: var(--space-3) !important;
+}
+
+.progress-fill {
+    height: 100% !important;
+    background: var(--color-gold) !important;
+    border-radius: 3px !important;
+    transition: width 0.6s ease !important;
+    position: relative !important;
+}
+
+.progress-fill::after {
+    display: none !important;
+}
+
+.progress-text {
+    font-size: var(--font-size-sm) !important;
+    color: rgba(255,255,255,0.8) !important;
+    text-align: left !important;
+}
+
+.progress-text i {
+    display: none !important;
+}
+
+/* Loyalty Benefits */
+.loyalty-benefits {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-3) !important;
+    margin-bottom: var(--space-5) !important;
+}
+
+.benefit-item {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: var(--radius-md) !important;
+    padding: var(--space-3) !important;
+    transition: var(--transition-base) !important;
+}
+
+.benefit-item:hover {
+    background: rgba(255,255,255,0.08) !important;
+}
+
+.benefit-item i {
+    font-size: 18px !important;
+    color: var(--color-gold) !important;
+    margin-bottom: var(--space-2) !important;
+    display: block !important;
+}
+
+.benefit-item strong {
+    display: block !important;
+    font-size: var(--font-size-xs) !important;
+    color: rgba(255,255,255,0.6) !important;
+    margin-bottom: var(--space-1) !important;
+    font-weight: 500 !important;
+}
+
+.benefit-item p {
+    font-size: var(--font-size-lg) !important;
+    font-weight: 600 !important;
+    color: var(--color-white) !important;
+    margin: 0 !important;
+}
+
+.benefit-item div {
+    color: var(--color-white) !important;
+}
+
+/* Loyalty Levels */
+.loyalty-levels {
+    position: relative !important;
+}
+
+.loyalty-levels h4 {
+    font-size: var(--font-size-sm) !important;
+    font-weight: 600 !important;
+    margin-bottom: var(--space-3) !important;
+    color: rgba(255,255,255,0.8) !important;
+}
+
+.loyalty-levels h4 i {
+    display: none !important;
+}
+
+.level-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-2) !important;
+}
+
+.level-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-3) !important;
+    padding: var(--space-3) !important;
+    background: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: var(--radius-md) !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+}
+
+.level-item:hover {
+    background: rgba(255,255,255,0.06) !important;
+}
+
+.level-item.active {
+    background: rgba(184,134,11,0.15) !important;
+    border-color: var(--color-gold) !important;
+}
+
+.level-item i {
+    font-size: 18px !important;
+    color: rgba(255,255,255,0.4) !important;
+    min-width: 24px !important;
+    display: inline-block !important;
+}
+
+.level-item.active i {
+    color: var(--color-gold) !important;
+}
+
+.level-item div {
+    flex: 1 !important;
+}
+
+.level-item strong {
+    display: block !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    color: var(--color-white) !important;
+    margin-bottom: 2px !important;
+}
+
+.level-item span {
+    font-size: var(--font-size-xs) !important;
+    color: rgba(255,255,255,0.5) !important;
+}
+
+/* Level Colors */
+.level-item[data-level="guest"] i { color: rgba(255,255,255,0.4) !important; }
+.level-item[data-level="bronze"] i { color: #cd7f32 !important; }
+.level-item[data-level="silver"] i { color: #c0c0c0 !important; }
+.level-item[data-level="gold"] i { color: var(--color-gold) !important; }
+.level-item[data-level="platinum"] i { color: #e5e4e2 !important; }
+
+.level-item[data-level="guest"].active i { color: rgba(255,255,255,0.6) !important; }
+.level-item[data-level="bronze"].active i { color: #cd7f32 !important; }
+.level-item[data-level="silver"].active i { color: #c0c0c0 !important; }
+.level-item[data-level="gold"].active i { color: var(--color-gold) !important; }
+.level-item[data-level="platinum"].active i { color: #e5e4e2 !important; }
+
+/* ============================================
+   CONTENT SECTION - Правая панель контента
+   ============================================ */
+
+.content-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-5) !important;
+}
+
+/* ============================================
+   STATS GRID - Статистика
+   ============================================ */
+
+.stats-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: var(--space-4) !important;
+}
+
+.stat-card {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-5) !important;
+    box-shadow: var(--shadow-sm) !important;
+    transition: var(--transition-base) !important;
+    position: relative !important;
+}
+
+.stat-card::before,
+.stat-card::after {
+    display: none !important;
+}
+
+.stat-card:hover {
+    border-color: var(--color-border-dark) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-2px) !important;
+}
+
+.stat-icon {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: var(--radius-md) !important;
+    background: var(--color-off-white) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-3) !important;
+    box-shadow: none !important;
+}
+
+.stat-icon i {
+    display: inline-block !important;
+}
+
+.stat-card:nth-child(1) .stat-icon {
+    background: var(--color-info-light) !important;
+    color: var(--color-info) !important;
+}
+
+.stat-card:nth-child(2) .stat-icon {
+    background: var(--color-gold-light) !important;
+    color: var(--color-gold) !important;
+}
+
+.stat-card:nth-child(3) .stat-icon {
+    background: var(--color-success-light) !important;
+    color: var(--color-success) !important;
+}
+
+.stat-card:nth-child(4) .stat-icon {
+    background: var(--color-warning-light) !important;
+    color: var(--color-warning) !important;
+}
+
+.stat-info {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.stat-info h3 {
+    font-size: var(--font-size-3xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-1) !important;
+    letter-spacing: -0.5px !important;
+}
+
+.stat-info p {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-secondary) !important;
+    font-weight: 500 !important;
+}
+
+/* ============================================
+   BOOKINGS SECTION - Секция бронирований
+   ============================================ */
+
+.bookings-section {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-6) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.section-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: var(--space-5) !important;
+    padding-bottom: var(--space-4) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    flex-wrap: wrap !important;
+    gap: var(--space-4) !important;
+}
+
+.section-header h2 {
+    font-size: var(--font-size-xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    letter-spacing: -0.3px !important;
+    margin: 0 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+}
+
+.section-header h2 i {
+    display: none !important;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex !important;
+    gap: var(--space-2) !important;
+    flex-wrap: wrap !important;
+}
+
+.filter-tab {
+    padding: var(--space-2) var(--space-4) !important;
+    border: 1px solid var(--color-border) !important;
+    background: var(--color-white) !important;
+    color: var(--color-secondary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    border-radius: var(--radius-pill) !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+}
+
+.filter-tab:hover {
+    border-color: var(--color-primary) !important;
+    color: var(--color-primary) !important;
+}
+
+.filter-tab.active {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.filter-tab i {
+    display: none !important;
+}
+
+/* Bookings List */
+.bookings-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-4) !important;
+}
+
+/* Booking Card */
+.booking-card {
+    background: var(--color-off-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-5) !important;
+    transition: var(--transition-base) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.booking-card::before,
+.booking-card::after {
+    display: none !important;
+}
+
+.booking-card:hover {
+    border-color: var(--color-primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* Booking Image */
+.booking-image {
+    width: 200px !important;
+    height: 140px !important;
+    border-radius: var(--radius-md) !important;
+    object-fit: cover !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+/* Booking Details */
+.booking-details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-3) !important;
+}
+
+/* Booking Header */
+.booking-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: var(--space-3) !important;
+    gap: var(--space-3) !important;
+}
+
+.booking-header h3 {
+    font-size: var(--font-size-lg) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin: 0 !important;
+}
+
+.booking-header h3 i {
+    display: none !important;
+}
+
+.booking-id {
+    font-size: var(--font-size-xs) !important;
+    color: var(--color-text-light) !important;
+    margin-top: var(--space-1) !important;
+}
+
+/* Booking Status */
+.booking-status {
+    padding: var(--space-1) var(--space-3) !important;
+    border-radius: var(--radius-pill) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
+}
+
+.booking-status i {
+    display: none !important;
+}
+
+.booking-status.confirmed,
+.booking-status.status-confirmed {
+    background: var(--color-info-light) !important;
+    color: var(--color-info) !important;
+}
+
+.booking-status.completed,
+.booking-status.status-completed {
+    background: var(--color-success-light) !important;
+    color: var(--color-success) !important;
+}
+
+.booking-status.cancelled,
+.booking-status.status-cancelled {
+    background: var(--color-error-light) !important;
+    color: var(--color-error) !important;
+}
+
+.booking-status.upcoming,
+.booking-status.status-upcoming {
+    background: var(--color-warning-light) !important;
+    color: var(--color-warning) !important;
+}
+
+/* Booking Info */
+.booking-info {
+    display: flex !important;
+    gap: var(--space-5) !important;
+    flex-wrap: wrap !important;
+}
+
+.info-item,
+.detail-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-secondary) !important;
+}
+
+.info-item i,
+.detail-item i {
+    color: var(--color-text-light) !important;
+    font-size: 16px !important;
+    display: inline-block !important;
+}
+
+.detail-item strong {
+    display: block !important;
+    font-size: var(--font-size-xs) !important;
+    color: var(--color-text-light) !important;
+    margin-bottom: 2px !important;
+}
+
+.detail-item p {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-primary) !important;
+    margin: 0 !important;
+}
+
+/* Booking Footer */
+.booking-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-top: var(--space-4) !important;
+    padding-top: var(--space-4) !important;
+    border-top: 1px solid var(--color-border) !important;
+    gap: var(--space-4) !important;
+}
+
+.booking-price {
+    display: flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+}
+
+.booking-price strong {
+    font-size: var(--font-size-lg) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+}
+
+.discount-badge {
+    padding: var(--space-1) var(--space-2) !important;
+    background: var(--color-success-light) !important;
+    color: var(--color-success) !important;
+    border-radius: var(--radius-sm) !important;
+    font-size: var(--font-size-xs) !important;
+    font-weight: 600 !important;
+}
+
+/* Booking Actions */
+.booking-actions {
+    display: flex !important;
+    gap: var(--space-2) !important;
+    align-items: center !important;
+}
+
+.booking-actions button {
+    padding: var(--space-2) var(--space-4) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-base) !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+}
+
+.btn-view {
+    background: var(--color-white) !important;
+    color: var(--color-primary) !important;
+}
+
+.btn-view:hover {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.btn-cancel {
+    background: var(--color-white) !important;
+    color: var(--color-error) !important;
+    border-color: var(--color-border) !important;
+}
+
+.btn-cancel:hover {
+    background: var(--color-error) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-error) !important;
+}
+
+.btn-review {
+    background: var(--color-primary) !important;
+    color: var(--color-white) !important;
+    border-color: var(--color-primary) !important;
+}
+
+.btn-review:hover {
+    background: var(--color-primary-light) !important;
+}
+
+.booking-actions button i {
+    display: inline-block !important;
+}
+
+/* Load More Button */
+.load-more-btn {
+    margin-top: var(--space-4) !important;
+    width: 100% !important;
+    padding: var(--space-3) !important;
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    color: var(--color-primary) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: var(--space-2) !important;
+}
+
+.load-more-btn:hover {
+    border-color: var(--color-primary) !important;
+    background: var(--color-off-white) !important;
+}
+
+.load-more-btn i {
+    display: inline-block !important;
+}
+
+/* ============================================
+   FAVORITES SECTION - Секция избранного
+   ============================================ */
+
+.favorites-section {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-6) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.favorites-section h2 {
+    font-size: var(--font-size-xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-5) !important;
+    letter-spacing: -0.3px !important;
+}
+
+.favorites-section h2 i {
+    display: none !important;
+}
+
+.favorites-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: var(--space-4) !important;
+}
+
+/* Favorite Room Card */
+.favorite-room-card {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    position: relative !important;
+}
+
+.favorite-room-card:hover {
+    box-shadow: var(--shadow-md) !important;
+    border-color: var(--color-border-dark) !important;
+}
+
+.favorite-room-card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.favorite-room-info {
+    padding: var(--space-4) !important;
+}
+
+.favorite-room-info h3,
+.favorite-room-info h4 {
+    font-size: var(--font-size-md) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.favorite-room-info p {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-secondary) !important;
+    margin-bottom: var(--space-3) !important;
+}
+
+.favorite-room-price {
+    font-size: var(--font-size-lg) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+}
+
+.favorite-overlay {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent) !important;
+    padding: var(--space-4) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--space-3) !important;
+    opacity: 0 !important;
+    transition: var(--transition-base) !important;
+}
+
+.favorite-room-card:hover .favorite-overlay {
+    opacity: 1 !important;
+}
+
+.favorite-overlay h4 {
+    color: var(--color-white) !important;
+    margin: 0 !important;
+}
+
+.favorite-overlay .btn-primary {
+    padding: var(--space-2) var(--space-4) !important;
+    background: var(--color-white) !important;
+    color: var(--color-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+}
+
+.remove-favorite {
+    position: absolute !important;
+    top: var(--space-3) !important;
+    right: var(--space-3) !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: var(--radius-circle) !important;
+    background: var(--color-white) !important;
+    border: none !important;
+    color: var(--color-error) !important;
+    font-size: 16px !important;
+    transition: var(--transition-base) !important;
+    box-shadow: var(--shadow-sm) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.remove-favorite:hover {
+    background: var(--color-error) !important;
+    color: var(--color-white) !important;
+    transform: scale(1.1) !important;
+}
+
+.remove-favorite i {
+    display: inline-block !important;
+}
+
+/* ============================================
+   LOADING & EMPTY STATES
+   ============================================ */
+
+.loading-state,
+.empty-state {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: var(--space-8) var(--space-5) !important;
+    color: var(--color-text-light) !important;
+    text-align: center !important;
+}
+
+.loading-state i {
+    font-size: 36px !important;
+    color: var(--color-accent) !important;
+    margin-bottom: var(--space-3) !important;
+    display: inline-block !important;
+}
+
+.empty-state i {
+    font-size: 48px !important;
+    color: var(--color-border) !important;
+    margin-bottom: var(--space-3) !important;
+    display: inline-block !important;
+}
+
+.empty-state h3 {
+    font-size: var(--font-size-lg) !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.empty-state p {
+    color: var(--color-secondary) !important;
+    margin-bottom: var(--space-4) !important;
+}
+
+.empty-state button,
+.empty-state a {
+    padding: var(--space-3) var(--space-5) !important;
+    background: var(--color-accent) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+}
+
+.empty-state button:hover,
+.empty-state a:hover {
+    background: var(--color-accent-hover) !important;
+}
+
+/* ============================================
+   MODAL - Модальное окно
+   ============================================ */
+
+.modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: var(--z-modal) !important;
+    display: none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: var(--space-5) !important;
+}
+
+.modal[style*="display: flex"],
+.modal[style*="display:flex"] {
+    display: flex !important;
+}
+
+.modal-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.5) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+.modal-content {
+    position: relative !important;
+    background: var(--color-white) !important;
+    border-radius: var(--radius-xl) !important;
+    max-width: 540px !important;
+    width: 100% !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    box-shadow: var(--shadow-xl) !important;
+    z-index: calc(var(--z-modal) + 1) !important;
+}
+
+.modal-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: var(--space-5) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+}
+
+.modal-header h2 {
+    font-size: var(--font-size-xl) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin: 0 !important;
+}
+
+.modal-header h2 i {
+    display: none !important;
+}
+
+.close-modal {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: var(--radius-circle) !important;
+    background: var(--color-light-gray) !important;
+    border: none !important;
+    color: var(--color-secondary) !important;
+    font-size: 18px !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.close-modal:hover {
+    background: var(--color-border) !important;
+    color: var(--color-primary) !important;
+}
+
+.close-modal i {
+    display: inline-block !important;
+}
+
+/* ============================================
+   FORM - Формы
+   ============================================ */
+
+#editProfileForm {
+    padding: var(--space-5) !important;
+}
+
+.form-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-4) !important;
+}
+
+.form-group {
+    margin-bottom: var(--space-4) !important;
+}
+
+.form-group label {
+    display: block !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+.form-group label i {
+    display: none !important;
+}
+
+.form-group input {
+    width: 100% !important;
+    padding: var(--space-3) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-base) !important;
+    transition: var(--transition-base) !important;
+    font-family: var(--font-family) !important;
+}
+
+.form-group input:focus {
+    outline: none !important;
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 0 0 3px rgba(0,113,194,0.1) !important;
+}
+
+.modal-actions {
+    display: flex !important;
+    gap: var(--space-3) !important;
+    justify-content: flex-end !important;
+    padding: var(--space-5) !important;
+    border-top: 1px solid var(--color-border) !important;
+}
+
+.modal-actions button {
+    padding: var(--space-3) var(--space-5) !important;
+    border: none !important;
+    border-radius: var(--radius-md) !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 500 !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: var(--space-2) !important;
+}
+
+.btn-secondary {
+    background: var(--color-light-gray) !important;
+    color: var(--color-primary) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--color-border) !important;
+}
+
+.btn-primary {
+    background: var(--color-accent) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-primary:hover {
+    background: var(--color-accent-hover) !important;
+}
+
+.modal-actions button i {
+    display: inline-block !important;
+}
+
+/* ============================================
+   FOOTER - Подвал
+   ============================================ */
+
+.account-footer {
+    background: var(--color-white) !important;
+    border-top: 1px solid var(--color-border) !important;
+    padding: var(--space-6) 0 !important;
+    margin-top: var(--space-8) !important;
+}
+
+.footer-content {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 var(--space-5) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.footer-content p {
+    color: var(--color-text-light) !important;
+    font-size: var(--font-size-sm) !important;
+    margin: 0 !important;
+}
+
+.footer-links {
+    display: flex !important;
+    gap: var(--space-5) !important;
+}
+
+.footer-links a {
+    color: var(--color-secondary) !important;
+    text-decoration: none !important;
+    font-size: var(--font-size-sm) !important;
+    transition: var(--transition-base) !important;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary) !important;
+    text-decoration: underline !important;
+}
+
+/* ============================================
+   NOTIFICATIONS - Уведомления
+   ============================================ */
+
+#notificationContainer {
+    position: fixed !important;
+    top: var(--space-5) !important;
+    right: var(--space-5) !important;
+    z-index: var(--z-notification) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-3) !important;
+}
+
+.notification {
+    background: var(--color-white) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: var(--space-4) !important;
+    box-shadow: var(--shadow-lg) !important;
+    min-width: 320px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: var(--space-3) !important;
+    animation: slideInRight 0.3s ease !important;
+}
+
+.notification.success,
+.notification-success {
+    border-left: 3px solid var(--color-success) !important;
+    background: var(--color-white) !important;
+}
+
+.notification.error,
+.notification-error {
+    border-left: 3px solid var(--color-error) !important;
+    background: var(--color-white) !important;
+}
+
+.notification.info,
+.notification-info {
+    border-left: 3px solid var(--color-info) !important;
+    background: var(--color-white) !important;
+}
+
+.notification.warning,
+.notification-warning {
+    border-left: 3px solid var(--color-warning) !important;
+    background: var(--color-white) !important;
+}
+
+.notification i {
+    font-size: 18px !important;
+    margin-top: 2px !important;
+    display: inline-block !important;
+}
+
+.notification.success i,
+.notification-success i {
+    color: var(--color-success) !important;
+}
+
+.notification.error i,
+.notification-error i {
+    color: var(--color-error) !important;
+}
+
+.notification.info i,
+.notification-info i {
+    color: var(--color-info) !important;
+}
+
+.notification.warning i,
+.notification-warning i {
+    color: var(--color-warning) !important;
+}
+
+.notification-content {
+    flex: 1 !important;
+}
+
+.notification-content strong {
+    display: block !important;
+    font-size: var(--font-size-sm) !important;
+    font-weight: 600 !important;
+    color: var(--color-primary) !important;
+    margin-bottom: var(--space-1) !important;
+}
+
+.notification-content p {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-secondary) !important;
+    margin: 0 !important;
+}
+
+.notification span {
+    font-size: var(--font-size-sm) !important;
+    color: var(--color-primary) !important;
+}
+
+.notification-close {
+    background: none !important;
+    border: none !important;
+    color: var(--color-text-light) !important;
+    font-size: 18px !important;
+    margin-left: auto !important;
+    transition: var(--transition-base) !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.notification-close:hover {
+    color: var(--color-primary) !important;
+}
+
+/* ============================================
+   LOADER - Загрузчик
+   ============================================ */
+
+#pageLoader {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    display: none !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: var(--z-loader) !important;
+    backdrop-filter: blur(5px) !important;
+}
+
+#pageLoader[style*="display: flex"],
+#pageLoader[style*="display:flex"] {
+    display: flex !important;
+}
+
+.loader-content {
+    text-align: center !important;
+    color: var(--color-white) !important;
+    font-size: 24px !important;
+}
+
+.loader-content i {
+    font-size: 48px !important;
+    margin-bottom: var(--space-3) !important;
+    display: block !important;
+}
+
+.loader-content p {
+    font-size: var(--font-size-lg) !important;
+    margin: 0 !important;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   RESPONSIVE - Адаптивность
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .account-container {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap !important;
+        gap: var(--space-3) !important;
+    }
+    
+    .account-container {
+        padding: var(--space-4) var(--space-3) !important;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .filter-tabs {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+    
+    .booking-card {
+        padding: var(--space-4) !important;
+    }
+    
+    .booking-image {
+        width: 100% !important;
+        height: 180px !important;
+    }
+    
+    .booking-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    
+    .booking-info {
+        flex-direction: column !important;
+        gap: var(--space-3) !important;
+    }
+    
+    .booking-footer {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    
+    .booking-actions {
+        width: 100% !important;
+        flex-direction: column !important;
+    }
+    
+    .booking-actions button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .favorites-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .modal-actions {
+        flex-direction: column-reverse !important;
+    }
+    
+    .modal-actions button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+    
+    .footer-content {
+        flex-direction: column !important;
+        gap: var(--space-4) !important;
+        text-align: center !important;
+    }
+    
+    .footer-links {
+        flex-direction: column !important;
+        gap: var(--space-2) !important;
+    }
+    
+    #notificationContainer {
+        left: var(--space-3) !important;
+        right: var(--space-3) !important;
+    }
+    
+    .notification {
+        min-width: unset !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .loyalty-benefits {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    
+    .filter-tabs {
+        width: 100% !important;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+*:focus-visible {
+    outline: 2px solid var(--color-accent) !important;
+    outline-offset: 2px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .account-header,
+    .account-footer,
+    .edit-avatar,
+    .edit-profile-btn,
+    .logout-btn,
+    .back-btn,
+    .booking-actions,
+    .remove-favorite,
+    .filter-tabs,
+    .load-more-btn {
+        display: none !important;
+    }
+    
+    body {
+        background: var(--color-white) !important;
+    }
+    
+    .account-container {
+        grid-template-columns: 1fr !important;
+        padding: 0 !important;
+    }
+}

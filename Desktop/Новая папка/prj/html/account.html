@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Аккаунт - Vila Eysk</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/account.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+    
+    <!-- Header -->
+    <header class="account-header">
+        <div class="header-content">
+            <!-- ✅ ИСПРАВЛЕНО: абсолютный путь -->
+            <a href="/" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>На главную</span>
+            </a>
+            <h1>
+                <i class="fas fa-user-circle"></i>
+                Мой Аккаунт
+            </h1>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Выйти</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="account-container">
+        
+        <!-- Left Sidebar - Profile Section -->
+        <aside class="profile-section">
+            
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <img 
+                        src="https://ui-avatars.com/api/?name=User&background=C9A961&color=fff&size=200" 
+                        alt="Avatar" 
+                        id="userAvatar"
+                    >
+                    <button class="edit-avatar" title="Изменить фото">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                
+                <div class="profile-info">
+                    <h2 id="userName">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Загрузка...
+                    </h2>
+                    <p id="userEmail">
+                        <i class="fas fa-envelope"></i>
+                        loading@example.com
+                    </p>
+                    <p class="member-since">
+                        <i class="fas fa-calendar-alt"></i>
+                        Участник с <span id="memberSince">...</span>
+                    </p>
+                </div>
+                
+                <button class="edit-profile-btn" onclick="openEditProfile()">
+                    <i class="fas fa-user-edit"></i>
+                    Редактировать профиль
+                </button>
+            </div>
+
+            <!-- Loyalty Program Card -->
+            <div class="loyalty-card">
+                <div class="loyalty-header">
+                    <div>
+                        <h3>
+                            <i class="fas fa-trophy"></i>
+                            Программа лояльности
+                        </h3>
+                        <p class="loyalty-status" id="loyaltyStatus">
+                            Статус: Гость
+                        </p>
+                    </div>
+                    <div class="loyalty-badge" id="loyaltyBadge">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+
+                <div class="loyalty-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="loyaltyProgress" style="width: 0%"></div>
+                    </div>
+                    <p class="progress-text">
+                        <i class="fas fa-chart-line"></i>
+                        <span id="currentVisits">0</span> из 
+                        <span id="nextLevelVisits">5</span> посещений до следующего уровня
+                    </p>
+                </div>
+
+                <div class="loyalty-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-tag"></i>
+                        <div>
+                            <strong>Текущая скидка</strong>
+                            <p id="currentDiscount">0%</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-gift"></i>
+                        <div>
+                            <strong>Бонусы</strong>
+                            <p id="bonusPoints">0 баллов</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="loyalty-levels">
+                    <h4>
+                        <i class="fas fa-layer-group"></i>
+                        Уровни лояльности:
+                    </h4>
+                    <div class="level-list">
+                        <div class="level-item" data-level="guest">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Гость</strong>
+                                <span>0 посещений • 0% скидка</span>
+                            </div>
+                        </div>
+                        <div class="level-item" data-level="bronze">
+                            <i class="fas fa-medal"></i>
+                            <div>
+                                <strong>Бронзовый</strong>
+                                <span>5 посещений • 5% скидка</span>
+                            </div>
+                        </div>
+                        <div class="level-item" data-level="silver">
+                            <i class="fas fa-award"></i>
+                            <div>
+                                <strong>Серебряный</strong>
+                                <span>10 посещений • 10% скидка</span>
+                            </div>
+                        </div>
+                        <div class="level-item" data-level="gold">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <strong>Золотой</strong>
+                                <span>20 посещений • 15% скидка</span>
+                            </div>
+                        </div>
+                        <div class="level-item" data-level="platinum">
+                            <i class="fas fa-crown"></i>
+                            <div>
+                                <strong>Платиновый</strong>
+                                <span>50 посещений • 25% скидка</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </aside>
+
+        <!-- Right Content - Stats & Bookings -->
+        <section class="content-section">
+            
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalStays">0</h3>
+                        <p>Всего визитов</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalNights">0</h3>
+                        <p>Ночей</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-ruble-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalSpent">0 ₽</h3>
+                        <p>Потрачено</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalSaved">0 ₽</h3>
+                        <p>Сэкономлено</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings History Section -->
+            <div class="bookings-section">
+                <div class="section-header">
+                    <h2>
+                        <i class="fas fa-calendar-check"></i>
+                        История бронирований
+                    </h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active" data-filter="all">
+                            <i class="fas fa-list"></i>
+                            Все
+                        </button>
+                        <button class="filter-tab" data-filter="confirmed">
+                            <i class="fas fa-check-circle"></i>
+                            Подтвержденные
+                        </button>
+                        <button class="filter-tab" data-filter="completed">
+                            <i class="fas fa-check-double"></i>
+                            Завершенные
+                        </button>
+                        <button class="filter-tab" data-filter="cancelled">
+                            <i class="fas fa-times-circle"></i>
+                            Отмененные
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bookings-list" id="bookingsList">
+                    <!-- Загрузка... -->
+                    <div class="loading-state">
+                        <i class="fas fa-spinner fa-spin fa-3x"></i>
+                        <p>Загрузка бронирований...</p>
+                    </div>
+                </div>
+
+                <button class="load-more-btn" id="loadMoreBookings" style="display: none;">
+                    <i class="fas fa-plus-circle"></i>
+                    Загрузить еще
+                </button>
+            </div>
+
+            <!-- Favorite Rooms Section -->
+            <div class="favorites-section">
+                <h2>
+                    <i class="fas fa-heart"></i>
+                    Избранные номера
+                </h2>
+                <div class="favorites-grid" id="favoriteRooms">
+                    <!-- Favorite rooms will be inserted here -->
+                    <div class="loading-state">
+                        <i class="fas fa-spinner fa-spin fa-2x"></i>
+                        <p>Загрузка...</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal" style="display: none;">
+        <div class="modal-overlay" onclick="closeEditProfile()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-user-edit"></i>
+                    Редактировать профиль
+                </h2>
+                <button class="close-modal" onclick="closeEditProfile()" type="button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="editProfileForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editFirstName">
+                            <i class="fas fa-user"></i>
+                            Имя
+                        </label>
+                        <input 
+                            type="text" 
+                            id="editFirstName" 
+                            name="firstName"
+                            placeholder="Введите имя"
+                            required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="editLastName">
+                            <i class="fas fa-user"></i>
+                            Фамилия
+                        </label>
+                        <input 
+                            type="text" 
+                            id="editLastName" 
+                            name="lastName"
+                            placeholder="Введите фамилию"
+                            required
+                        >
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editEmail">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </label>
+                    <input 
+                        type="email" 
+                        id="editEmail" 
+                        name="email"
+                        placeholder="example@email.com"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPhone">
+                        <i class="fas fa-phone"></i>
+                        Телефон
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="editPhone" 
+                        name="phone"
+                        placeholder="+7 (___) ___-__-__"
+                        required
+                    >
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeEditProfile()">
+                        <i class="fas fa-times"></i>
+                        Отмена
+                    </button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i>
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="account-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Vila Eysk. Все права защищены.</p>
+            <div class="footer-links">
+                <!-- ✅ ИСПРАВЛЕНО: абсолютные пути -->
+                <a href="/privacy">Политика конфиденциальности</a>
+                <a href="/terms">Условия использования</a>
+                <a href="/contact">Поддержка</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Firebase Check Script -->
+    <script>
+        console.log('🔍 Проверка загрузки Firebase:', {
+            firebase: typeof firebase !== 'undefined',
+            app: typeof firebase !== 'undefined' && typeof firebase.app !== 'undefined',
+            auth: typeof firebase !== 'undefined' && typeof firebase.auth !== 'undefined',
+            database: typeof firebase !== 'undefined' && typeof firebase.database !== 'undefined'
+        });
+
+        if (typeof firebase === 'undefined') {
+            console.error('❌ КРИТИЧЕСКАЯ ОШИБКА: Firebase не загружен!');
+            document.body.innerHTML = `
+                <div style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100vh;
+                    text-align: center;
+                    padding: 20px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    font-family: Arial, sans-serif;
+                ">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 64px; margin-bottom: 20px;"></i>
+                    <h1>Ошибка загрузки</h1>
+                    <p>Firebase SDK не загружен. Пожалуйста, проверьте подключение к интернету.</p>
+                    <button onclick="location.reload()" style="
+                        margin-top: 20px;
+                        padding: 15px 30px;
+                        background: white;
+                        color: #667eea;
+                        border: none;
+                        border-radius: 25px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    ">
+                        <i class="fas fa-sync-alt"></i> Обновить страницу
+                    </button>
+                </div>
+            `;
+        } else {
+            console.log('✅ Firebase SDK загружен успешно');
+        }
+    </script>
+
+    <!-- Account Script - ✅ ИСПРАВЛЕНО: абсолютный путь -->
+    <script src="/js/account.js"></script>
+
+</body>
+</html>

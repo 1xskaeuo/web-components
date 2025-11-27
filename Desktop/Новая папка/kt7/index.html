@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <section>
+            <h2>Модальное окно</h2>
+            <button id="open-modal-btn">Открыть модальное окно</button>
+        </section>
+        
+        <section>
+            <h2>Список задач</h2>
+            <div class="todo-input-container">
+                <input type="text" id="todo-input" placeholder="Введите новую задачу">
+                <button id="add-todo-btn">Добавить</button>
+            </div>
+            <todo-list></todo-list>
+        </section>
+        
+        <section>
+            <h2>Смена темы</h2>
+            <theme-button></theme-button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

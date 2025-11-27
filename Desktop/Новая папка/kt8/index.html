@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Прогноз погоды</h1>
+            <p class="description">
+                Получение актуальных данных о погоде в режиме реального времени
+            </p>
+        </header>
+
+        <div class="city-selector">
+            <label for="city">Выберите город:</label>
+            <select id="city">
+                <option value="55.7558,37.6173">Москва</option>
+                <option value="59.9343,30.3351">Санкт-Петербург</option>
+                <option value="55.0084,82.9357">Новосибирск</option>
+                <option value="56.8389,60.6057">Екатеринбург</option>
+                <option value="43.5855,39.7231">Сочи</option>
+            </select>
+        </div>
+
+        <div class="controls">
+            <button id="updateBtn" class="btn">Обновить данные</button>
+            <span class="last-update">Последнее обновление: -</span>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>Загрузка данных...</p>
+        </div>
+
+        <div id="weatherCard" class="weather-card hidden">
+            <div class="weather-main">
+                <div class="temperature">
+                    <span id="temp" class="temp-value">--</span>
+                    <span class="temp-unit">°C</span>
+                </div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-label">Скорость ветра:</span>
+                    <span id="windSpeed" class="detail-value">-- км/ч</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Влажность:</span>
+                    <span id="humidity" class="detail-value">-- %</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Облачность:</span>
+                    <span id="cloudCover" class="detail-value">-- %</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Ощущается как:</span>
+                    <span id="feelsLike" class="detail-value">-- °C</span>
+                </div>
+            </div>
+
+            <div class="auto-update-info">
+                Автообновление каждые 15 секунд
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

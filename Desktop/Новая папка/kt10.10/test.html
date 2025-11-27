@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Тесты корзины</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mocha@10.2.0/mocha.min.css">
+</head>
+<body>
+    <div id="mocha"></div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chai@4.3.7/chai.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mocha@10.2.0/mocha.min.js"></script>
+    
+    <script>
+        mocha.setup('bdd');
+    </script>
+    
+    <script>
+        const cart = {};
+
+        function addToCart(productId, quantity) {
+            if (quantity <= 0) {
+                throw new Error('Quantity must be positive');
+            }
+            if (cart[productId]) {
+                cart[productId] += quantity;
+            } else {
+                cart[productId] = quantity;
+            }
+            return cart;
+        }
+
+        function getCart() {
+            return cart;
+        }
+
+        function clearCart() {
+            Object.keys(cart).forEach(key => delete cart[key]);
+        }
+    </script>
+    
+    <script>
+        const expect = chai.expect;
+
+        describe('Корзина товаров', function() {
+            
+            beforeEach(function() {
+                clearCart();
+            });
+            
+            it('добавление нового товара', function() {
+                addToCart('1', 2);
+                expect(getCart()['1']).to.equal(2);
+            });
+            
+            it('увеличение количества уже добавленного товара', function() {
+                addToCart('1', 2);
+                addToCart('1', 3);
+                expect(getCart()['1']).to.equal(5);
+            });
+            
+            it('попытка добавить товар с отрицательным количеством', function() {
+                expect(function() { 
+                    addToCart('1', -5); 
+                }).to.throw('Quantity must be positive');
+            });
+            
+        });
+    </script>
+    
+    <script>
+        window.onload = function() {
+            mocha.run();
+        };
+    </script>
+</body>
+</html>

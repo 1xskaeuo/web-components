@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Vila Eysk</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Raleway:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body class="auth-page">
+    <!-- Animated Background -->
+    <div class="auth-background">
+        <div class="wave-bg"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Register Container -->
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <a href="/" class="back-home">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1>Vila Eysk</h1>
+                <p class="auth-subtitle">Создайте аккаунт</p>
+            </div>
+
+            <form id="registerForm" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">
+                            <i class="fas fa-user"></i>
+                            Имя
+                        </label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            required 
+                            placeholder="Иван"
+                            autocomplete="given-name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">
+                            <i class="fas fa-user"></i>
+                            Фамилия
+                        </label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            required 
+                            placeholder="Иванов"
+                            autocomplete="family-name"
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </label>
+                    <input 
+                        type="email" 
+                        id="registerEmail" 
+                        required 
+                        placeholder="example@mail.com"
+                        autocomplete="email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPhone">
+                        <i class="fas fa-phone"></i>
+                        Телефон
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="registerPhone" 
+                        required 
+                        placeholder="+7 (999) 123-45-67"
+                        autocomplete="tel"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">
+                        <i class="fas fa-lock"></i>
+                        Пароль
+                    </label>
+                    <div class="password-input">
+                        <input 
+                            type="password" 
+                            id="registerPassword" 
+                            required 
+                            placeholder="••••••••"
+                            autocomplete="new-password"
+                            minlength="6"
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePassword('registerPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-strength" id="passwordStrength"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">
+                        <i class="fas fa-lock"></i>
+                        Подтвердите пароль
+                    </label>
+                    <div class="password-input">
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            required 
+                            placeholder="••••••••"
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <span>Я согласен с <a href="#" class="link">условиями использования</a> и <a href="#" class="link">политикой конфиденциальности</a></span>
+                </label>
+
+                <button type="submit" class="auth-btn">
+                    <span>Создать аккаунт</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="auth-divider">
+                    <span>или</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </button>
+                    <button type="button" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </button>
+                </div>
+
+                <p class="auth-switch">
+                    Уже есть аккаунт? 
+                   <a href="/login">Войти</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- 🔥 ДОБАВЬ ЭТИ СКРИПТЫ FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script src="../js/auth.js"></script>
+</body>
+</html>

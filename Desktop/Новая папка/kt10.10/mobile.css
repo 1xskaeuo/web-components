@@ -1,0 +1,19 @@
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .products {
+        grid-template-columns: 1fr;
+    }
+    
+    .cart-sidebar {
+        width: 100%;
+        position: static;
+    }
+    
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

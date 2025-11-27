@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мини-магазин</title>
+    <link rel="preload" href="main.css" as="style">
+    <link rel="preload" href="app.js" as="script">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="mobile.css" media="(max-width: 768px)">
+</head>
+<body>
+    <header>
+        <h1>Мини-магазин</h1>
+        <div>
+            <span class="cart-icon"></span>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="products">
+            <div class="product" data-id="1" data-stock="10">
+                <h3>Товар 1</h3>
+                <p class="price">1000 ₽</p>
+                <p class="stock">В наличии: <span>10</span></p>
+                <div class="controls">
+                    <button class="btn-minus">-</button>
+                    <input type="number" class="quantity" value="1" min="1">
+                    <button class="btn-plus">+</button>
+                </div>
+                <button class="btn-add">Добавить</button>
+            </div>
+            
+            <div class="product" data-id="2" data-stock="5">
+                <h3>Товар 2</h3>
+                <p class="price">2000 ₽</p>
+                <p class="stock">В наличии: <span>5</span></p>
+                <div class="controls">
+                    <button class="btn-minus">-</button>
+                    <input type="number" class="quantity" value="1" min="1">
+                    <button class="btn-plus">+</button>
+                </div>
+                <button class="btn-add">Добавить</button>
+            </div>
+            
+            <div class="product" data-id="3" data-stock="8">
+                <h3>Товар 3</h3>
+                <p class="price">1500 ₽</p>
+                <p class="stock">В наличии: <span>8</span></p>
+                <div class="controls">
+                    <button class="btn-minus">-</button>
+                    <input type="number" class="quantity" value="1" min="1">
+                    <button class="btn-plus">+</button>
+                </div>
+                <button class="btn-add">Добавить</button>
+            </div>
+        </div>
+        
+        <div class="cart-sidebar">
+            <h2>Корзина</h2>
+            <div class="cart-items"></div>
+            <div class="cart-total">
+                <strong>Итого товаров: <span>0</span></strong>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
