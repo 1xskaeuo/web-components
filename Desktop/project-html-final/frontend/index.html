@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Главная</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Memory Game</h1>
+            <nav>
+                <button id="theme-toggle">🌙</button>
+                <div id="auth-buttons" class="auth-buttons">
+                    <button onclick="location.href='login.html'" class="nav-btn">Войти</button>
+                    <button onclick="location.href='register.html'" class="nav-btn">Регистрация</button>
+                </div>
+                <div id="user-menu" class="user-menu" style="display: none;">
+                    <span id="username" class="username"></span>
+                    <button onclick="location.href='profile.html'" class="nav-btn">Профиль</button>
+                    <button onclick="location.href='game.html'" class="nav-btn">Играть</button>
+                    <button id="logout-btn" class="nav-btn">Выйти</button>
+                </div>
+            </nav>
+        </header>
+
+        <main class="main-content">
+            <section class="hero">
+                <h2>Тренируйте память с нашей игрой!</h2>
+                <p>Найдите все парные карточки за минимальное время</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary" style="display: none;">Начать игру</button>
+                    <button class="btn-secondary">Войти в аккаунт</button>
+                </div>
+            </section>
+
+            <section class="features">
+                <div class="feature-card">
+                    <h3>Статистика</h3>
+                    <p>Отслеживайте ваш прогресс и улучшайте результаты. Анализируйте свои лучшие игры и средние показатели.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Темы</h3>
+                    <p>Выбирайте удобную цветовую схему. Темная тема для ночных сессий или светлая для дневных.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Прогресс</h3>
+                    <p>Наблюдайте за своим развитием. Следите за улучшением памяти и скорости реакции со временем.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="auth.js"></script>
+    <script>
+        // Простой и надежный скрипт для темы на главной странице
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена, инициализация темы...');
+            
+            // Загрузка сохраненной темы
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            // Установка иконки темы
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                console.log('Кнопка темы найдена');
+                themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+                
+                // Обработчик клика для темы
+                themeToggle.addEventListener('click', function() {
+                    console.log('Клик по кнопке темы');
+                    const body = document.body;
+                    const currentTheme = body.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    
+                    console.log('Смена темы с', currentTheme, 'на', newTheme);
+                    
+                    body.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+                });
+            } else {
+                console.log('Кнопка темы не найдена!');
+            }
+            
+            // Обработчик выхода
+            const logoutBtn = document.getElementById('logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    localStorage.removeItem('token');
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Профиль</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👤 Профиль</h1>
+            <nav>
+                <button id="theme-toggle">🌙</button>
+                <button onclick="location.href='game.html'">🎮 Играть</button>
+                <button onclick="location.href='index.html'">🏠 Главная</button>
+                <button id="logout-btn">🚪 Выйти</button>
+            </nav>
+        </header>
+
+        <main class="profile-content">
+            <div class="profile-card">
+                <h2>Информация пользователя</h2>
+                <div class="user-info">
+                    <p><strong>Имя:</strong> <span id="profile-username"></span></p>
+                    <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                    <p><strong>Дата регистрации:</strong> <span id="profile-joined"></span></p>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h2>📊 Статистика игр</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>Всего игр</h3>
+                        <span id="total-games">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Лучший счет</h3>
+                        <span id="best-score">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Средний счет</h3>
+                        <span id="avg-score">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>Лучшее время</h3>
+                        <span id="best-time">0</span>с
+                    </div>
+                </div>
+            </div>
+
+            <div class="history-card">
+                <h2>📈 История игр</h2>
+                <div id="games-history" class="games-history">
+                    <!-- История игр будет загружена здесь -->
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>
